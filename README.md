@@ -1,8 +1,14 @@
 # Show Time 
+
 -create viteapp 
 -configured tailwindcss 
+-Header 
+-Login From
+-Signup Form
 
-#Features 
+
+# Features 
+
 -Login/Sign Up
     - Sign / Signup 
     - redirect to Browse page
