@@ -1,28 +1,27 @@
-function Banner() {
+function Banner({ movies }) {
+  const index = Math.floor(Math.random() * movies.length);
   const featuredMovie = {
-    title: "The Matrix",
-    description:
-      "A computer hacker learns the true nature of his reality and his role in the war against its controllers.",
-    image:
-      "https://image.tmdb.org/t/p/original/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+    title: movies[index].title,
+    description: movies[index].overview,
+    image: `https://image.tmdb.org/t/p/original${movies[index].backdrop_path}
+`,
   };
   return (
-    <div className="text-white relative h-[450px]">
+    <div className="mt-6 mx-4 p-4 rounded-md relative bg-black">
       <img
         src={featuredMovie.image}
         alt={featuredMovie.title}
-        className="w-full h-full brightness-50 object-cover"
+        className="absolute top-0 left-0 w-full h-full object-cover brightness-50 rounded-md"
       />
-      <div className="absolute top-1/2 left-8 max-w-xl space-y-4">
-        <h1 className="text-4xl fond-boldw">{featuredMovie.title}</h1>
+      <div className="relative z-10 space-y-4">
+        <h1 className="text-4xl font-bold ">{featuredMovie.title}</h1>
         <p className="text-sm md:text-base">{featuredMovie.description}</p>
 
         <div className="space-x-4">
-          <button className="bg-white text-black px-4 py-2 rounded hover:bg-gray-300 transition">
+          <button className="px-4 py-2 rounded text-sm font-medium">
             ▶ Play
           </button>
-          <button className="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-600 transition">
-            {" "}
+          <button className="px-4 py-2 rounded text-sm font-medium">
             ℹ More Info
           </button>
         </div>

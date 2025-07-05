@@ -1,21 +1,15 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { Browse } from "./components/Browse.jsx";
+import { Movies } from "./components/Movies.jsx";
 import { Login } from "./pages/Login.jsx";
+import { Home } from "./pages/Home.jsx";
 function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-700">
+    <div className="min-h-screen">
       <BrowserRouter>
-        <nav className="flex gap-4 p-2 bg-gray-300 ">
-          <Link to="/login" className="text-blue hover:underline">
-            Login
-          </Link>
-          <Link to="/browse" className="text-blue hover:underline">
-            Browse
-          </Link>
-        </nav>
         <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/movies" element={<Movies />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          <Route path="/browse" element={<Browse />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
