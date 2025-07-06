@@ -34,7 +34,7 @@ function Header({
       </div>
 
       <div className="flex items-center gap-4">
-        <div class="relative">
+        <div className="relative">
           <span
             className="text-xl cursor-pointer"
             onClick={() => setShowSearch((prev) => (prev === 1 ? 0 : 1))}
