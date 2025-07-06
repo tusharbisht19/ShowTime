@@ -7,14 +7,22 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 function Movies() {
   const [movies, setMovies] = useState([]);
   const [selectedGenreId, setSelectedGenreId] = useState(null);
-  console.log(700)
+  const [searchQuery, setSearchQuery] = useState("");
+  const selectedGenre = genres.find((genre) => genre.id === selectedGenreId);
+  const genreTitle = selectedGenre ? selectedGenre.name : "Popular Movies";
   useEffect(() => {
     async function getMovies() {
       try {
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
-        );
-
+        let response;
+        if (selectedGenreId) {
+          response = await fetch(
+            `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${selectedGenreId}`
+          );
+        } else {
+          response = await fetch(
+            `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
+          );
+        }
         const data = await response.json();
 
         setMovies(data.results);
@@ -24,15 +32,19 @@ function Movies() {
       }
     }
     getMovies();
-  }, []);
+  }, [selectedGenreId]);
 
   return (
     <div>
-      <Header />
+      <Header
+        selectedGenreId={selectedGenreId}
+        setSelectedGenreId={setSelectedGenreId}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+      />
+
       {movies.length > 0 && <Banner movies={movies} />}
-      <MovieRow title="Action" movies={movies} />
-      <MovieRow title="Sci-fi" movies={movies} />
-      <MovieRow title="Comedy" movies={movies} />
+      <MovieRow title={genreTitle} movies={movies} />
     </div>
   );
 }

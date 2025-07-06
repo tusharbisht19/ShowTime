@@ -1,4 +1,5 @@
 import { Header } from "../components/Header.jsx";
+import {Link} from "react-router-dom";
 function Login() {
   return (
     <div className="relative min-h-screen">
@@ -16,7 +17,7 @@ https://assets.nflxext.com/ffe/siteui/vlv3/75b0ed49-75ab-4a63-bd45-37bc2c95cb73/
         <input
           className="w-full p-2 mb-6 border rounded-md"
           type="email"
-          placeholder="Email or Phone Number"
+          placeholder="Email"
         />
         <input
           className="w-full p-2 mb-6 border rounded-md"
@@ -24,18 +25,18 @@ https://assets.nflxext.com/ffe/siteui/vlv3/75b0ed49-75ab-4a63-bd45-37bc2c95cb73/
           placeholder="Password"
         />
 
-        <button className="bg-red-600 hover:bg-red-700 text-white border rounded-md w-full mb-6 cursor-pointer py-2">
+        <button className="bg-blue-600 hover:bg-blue-700 text-white border rounded-md w-full mb-6 cursor-pointer py-2">
           Sign In
         </button>
 
         <div className="w-full text-center">
-          <span>New to Netflix?</span>
-          <span
+          <span>New to Show Time?</span>
+          <Link
+            to="/signup"
             className="hover:underline cursor-pointer"
-            onClick={() => toogleSignInForm()}
           >
             Sign up now.
-          </span>
+          </Link>
         </div>
       </form>
     </div>
