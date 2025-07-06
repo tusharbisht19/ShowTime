@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Header } from "./Header.jsx";
-import { MovieRow } from "./MovieRow.jsx";
-import { Banner } from "./Banner.jsx";
+import { Header } from "../components/Header.jsx";
+import { MovieRow } from "../components/MovieRow.jsx";
+import { Banner } from "../components/Banner.jsx";
 import { genres } from "../Data/genres.js";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 function Movies() {

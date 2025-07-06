@@ -1,16 +1,19 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { Movies } from "./components/Movies.jsx";
+import { Movies } from "./pages/Movies.jsx";
 import { Login } from "./pages/Login.jsx";
 import { Home } from "./pages/Home.jsx";
 import { Signup } from "./pages/Signup.jsx";
+import { MovieDetails } from "./pages/MovieDetails.jsx";
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-black">
       <BrowserRouter>
         <Routes>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/movies" element={<Movies />}></Route>
+          <Route path="/movie/:id" element={<MovieDetails />}></Route>
+
           <Route path="/login" element={<Login />}></Route>
         </Routes>
       </BrowserRouter>
