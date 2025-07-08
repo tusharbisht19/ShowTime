@@ -31,6 +31,12 @@ function Header({
         <Link className="hover:text-black hover:bg-white px-2 py-1 rounded cursor-pointer">
           Subscription
         </Link>
+        <Link
+          to="/watchlist"
+          className="hover:text-black hover:bg-white px-2 py-1 rounded cursor-pointer"
+        >
+          Watchlist
+        </Link>
       </div>
 
       <div className="flex items-center gap-4">
@@ -80,10 +86,12 @@ function Header({
           </div>
         </div>
 
-        <Link to="/login" className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm">
+        <Link
+          to="/login"
+          className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm"
+        >
           Login
         </Link>
-      
       </div>
     </div>
   );
