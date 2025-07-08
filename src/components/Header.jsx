@@ -25,7 +25,10 @@ function Header({
         >
           Movies
         </Link>
-        <Link className="hover:text-black hover:bg-white px-2 py-1 rounded cursor-pointer">
+        <Link
+          to="/tv"
+          className="hover:text-black hover:bg-white px-2 py-1 rounded cursor-pointer"
+        >
           Tv Shows
         </Link>
         <Link className="hover:text-black hover:bg-white px-2 py-1 rounded cursor-pointer">
