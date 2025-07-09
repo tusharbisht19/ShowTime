@@ -20,7 +20,7 @@ function TvShows() {
       ) : (
         <>
           {shows.length > 0 && <Banner movies={shows} />}
-          <MovieRow title="Popular shows" movies={shows} />
+          <MovieRow title="Popular shows" movies={shows} type="tv" />
         </>
       )}
     </div>

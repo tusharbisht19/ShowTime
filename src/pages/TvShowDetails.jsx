@@ -1,10 +1,14 @@
 import { useParams } from "react-router-dom";
 import { Header } from "../components/Header.jsx";
 import { useFetchMovieDetails } from "../hooks/useFetchMovieDetails.jsx";
-function MovieDetails() {
+function TvShowDetails() {
   const { id } = useParams();
-  const { movie, loading, error } = useFetchMovieDetails({ movieId: id });
-  
+  const {
+    movie: show,
+    loading,
+    error,
+  } = useFetchMovieDetails({ movieId: id, type: "tv" });
+
   return (
     <div>
       <Header />
@@ -16,15 +20,15 @@ function MovieDetails() {
         <>
           <div className="relative w-full text-white h-[80vh]">
             <img
-              src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-              alt={movie.title}
+              src={`https://image.tmdb.org/t/p/original${show.backdrop_path}`}
+              alt={show.title}
               className="absolute top-0 left-0 w-full h-full object-cover rounded-md brightness-80 px-5"
             />
             <div className="absolute top-1/3 left-6 z-10 max-w-xl space-y-4">
-              <h1 className="text-3xl font-bold px-6 mt-4">{movie.title}</h1>
-              <p className="text-white px-4 mt-6">{movie.overview}</p>
+              <h1 className="text-3xl font-bold px-6 mt-4">{show.title}</h1>
+              <p className="text-white px-4 mt-6">{show.overview}</p>
               <div>
-                {movie.genres?.map((genre) => (
+                {show.genres?.map((genre) => (
                   <span
                     key={genre.id}
                     className="px-2 py-1 text-m cursor-pointer underline"
@@ -40,4 +44,4 @@ function MovieDetails() {
     </div>
   );
 }
-export { MovieDetails };
+export { TvShowDetails };

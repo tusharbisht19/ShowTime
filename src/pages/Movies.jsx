@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from "react";
 import { Header } from "../components/Header.jsx";
 import { MovieRow } from "../components/MovieRow.jsx";
 import { Banner } from "../components/Banner.jsx";
@@ -31,7 +31,7 @@ function Movies() {
       ) : (
         <>
           {movies.length > 0 && <Banner movies={movies} />}
-          <MovieRow title={genreTitle} movies={movies} />
+          <MovieRow title={genreTitle} movies={movies} type="movie" />
         </>
       )}
     </div>
