@@ -1,13 +1,29 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Header } from "../components/Header.jsx";
-import { Link } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  function handleSubmit(e) {
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+  async function handleSubmit(e) {
     e.preventDefault();
-    // auth logic later
+    try {
+      const response = await fetch(`http://localhost:5001/api/auth/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Login failed");
+      }
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      navigate("/profile");
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   }
   return (
     <div className="relative min-h-screen">
@@ -55,6 +71,10 @@ https://assets.nflxext.com/ffe/siteui/vlv3/75b0ed49-75ab-4a63-bd45-37bc2c95cb73/
             Sign up now.
           </Link>
         </div>
+
+        {errorMessage && (
+          <div className="text-red-500 text-center">{errorMessage}</div>
+        )}
       </form>
     </div>
   );

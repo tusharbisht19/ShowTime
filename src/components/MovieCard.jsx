@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { WatchlistContext } from "../context/WatchlistContext";
-function MovieCard({ movie, type}) {
+function MovieCard({ movie, type }) {
   const { addToWatchlist } = useContext(WatchlistContext);
   return (
     <div className="w-[350px] flex-shrink-0">

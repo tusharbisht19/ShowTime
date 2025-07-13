@@ -1,17 +1,41 @@
 import { useState } from "react";
 import { Header } from "../components/Header.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 function Signup() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errorMessage,setErrorMessage] = useState('');
-  function handleSubmit(e)
-  {
-      e.preventDefault();
-      if(confirmPassword !== password) setErrorMessage("Passwords did not match");
-      return;
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (confirmPassword !== password)
+      setErrorMessage("Passwords did not match");
+
+    try {
+      const response = await fetch(`http://localhost:5001/api/auth/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setErrorMessage("Signup failed");
+        return;
+      }
+
+      localStorage.setItem("token", data.token);
+
+      navigate("/login");
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
+    return;
   }
   return (
     <div className="relative min-h-screen">
