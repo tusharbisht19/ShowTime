@@ -81,12 +81,14 @@ function Header({
         </div>
 
         <div className="relative group">
-          <span className="text-xl cursor-pointer">👤</span>
-          <div className="absolute top-full right-0 mt-2 bg-white p-2 rounded shadow-md hidden group-hover:block z-50">
-            <button className="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded">
-              Sign In
-            </button>
-          </div>
+          <Link to="/profile">
+            <span className="text-xl cursor-pointer">👤</span>
+            <div className="absolute top-full right-0 mt-2 bg-white p-2 rounded shadow-md hidden group-hover:block z-50">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1 rounded">
+                Profile
+              </button>
+            </div>
+          </Link>
         </div>
 
         <Link

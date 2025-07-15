@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../components/Header.jsx";
 function Profile() {
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     async function enterPage() {
@@ -21,6 +22,7 @@ function Profile() {
 
         const data = await response.json();
         console.log(data);
+        setLoading(false);
       } catch (error) {
         console.log(error.message);
         navigate("/login");
@@ -28,11 +30,19 @@ function Profile() {
     }
     enterPage();
   }, []);
+
   return (
-    <>
+    <div>
       <Header />
-      <h1 className="text-white text-3xl">Profile page</h1>
-    </>
+      {loading ? (
+        <div className="text-white flex items-center justify-center h-[calc(100vh-64px)]"> Loading ...</div>
+      ) : (
+        <>
+          <h1 className="text-white text-3xl w-full h-[calc(400vh-64px)] ">Profile page</h1>
+          
+        </>
+      )}
+    </div>
   );
 }
 

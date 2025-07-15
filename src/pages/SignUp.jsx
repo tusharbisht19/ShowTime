@@ -39,7 +39,9 @@ function Signup() {
   }
   return (
     <div className="relative min-h-screen">
-      <Header />
+      <div className="relative w-full z-10">
+        <Header />
+      </div>
       <div>
         <img
           className="w-full absolute h-screen object-cover top-0 left-0 z-0"

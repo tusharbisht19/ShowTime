@@ -24,7 +24,7 @@ function WatchlistProvider({ children }) {
       const data = await response.json();
       setWatchlist(data.watchlist);
     } catch (error) {
-      throw new Error(error.message);
+      console.log(error.message);
     }
   }
   async function removeFromWatchlist(movieId) {
@@ -43,7 +43,7 @@ function WatchlistProvider({ children }) {
       const data = await response.json();
       setWatchlist(data.watchlist);
     } catch (error) {
-      throw new Error(error.message);
+      console.log(error.message);
     }
   }
 
@@ -61,7 +61,7 @@ function WatchlistProvider({ children }) {
       const data = await response.json();
       setWatchlist(data.watchlist);
     } catch (error) {
-      throw new Error(error.message);
+      console.log(error.message);
     }
   }
 
